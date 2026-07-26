@@ -1,0 +1,634 @@
+{
+  "ATV Elstree Studios": {},
+  "Argyll and Bute": {
+    "latitude": "55.98333333",
+    "longitude": "-5.45",
+    "wikidata_id": "Q202174",
+    "matched_name": "Argyll and Bute"
+  },
+  "Associated British Studios": {},
+  "BBC Elstree Centre": {
+    "latitude": "51.65972222",
+    "longitude": "-0.27472222",
+    "wikidata_id": "Q15261685",
+    "matched_name": "BBC Elstree Centre"
+  },
+  "Beaconsfield Studios": {},
+  "Bedfordshire": {
+    "latitude": "52.0795804699",
+    "longitude": "-0.448204047696",
+    "wikidata_id": "Q67387552",
+    "matched_name": "Bedfordshire"
+  },
+  "Belfast": {
+    "latitude": "54.596666666666664",
+    "longitude": "-5.93",
+    "wikidata_id": "Q10686",
+    "matched_name": "Belfast"
+  },
+  "Berkshire": {
+    "latitude": "51.5138315912",
+    "longitude": "-1.20881068417",
+    "wikidata_id": "Q67284726",
+    "matched_name": "Berkshire"
+  },
+  "Bovingdon Studios": {},
+  "Bradford": {
+    "latitude": "53.792",
+    "longitude": "-1.754",
+    "wikidata_id": "Q2834810",
+    "matched_name": "Bradford"
+  },
+  "Bray Studios": {
+    "latitude": "51.492881",
+    "longitude": "-0.676111",
+    "wikidata_id": "Q2924156",
+    "matched_name": "Bray Studios"
+  },
+  "Bridlington": {
+    "latitude": "54.088",
+    "longitude": "-0.2004",
+    "wikidata_id": "Q527391",
+    "matched_name": "Bridlington"
+  },
+  "Bristol": {
+    "latitude": "51.45361111111111",
+    "longitude": "-2.5975",
+    "wikidata_id": "Q23154",
+    "matched_name": "Bristol"
+  },
+  "British International Pictures Studios": {},
+  "British National Studios": {},
+  "Buckinghamshire": {
+    "latitude": "51.8280222469",
+    "longitude": "-0.790425894719",
+    "wikidata_id": "Q67285329",
+    "matched_name": "Buckinghamshire"
+  },
+  "Cambridgeshire": {
+    "latitude": "52.3392492724",
+    "longitude": "0.132202197275",
+    "wikidata_id": "Q30612390",
+    "matched_name": "Cambridgeshire"
+  },
+  "Cardiff": {
+    "latitude": "51.48166666666667",
+    "longitude": "-3.1791666666666667",
+    "wikidata_id": "Q10690",
+    "matched_name": "Cardiff"
+  },
+  "Catford Studios": {
+    "latitude": "51.428666666666665",
+    "longitude": "-0.012466666666666668",
+    "wikidata_id": "Q5051995",
+    "matched_name": "Catford Studios"
+  },
+  "Cheshire": {
+    "latitude": "53.2329744449",
+    "longitude": "-2.50739109533",
+    "wikidata_id": "Q67287495",
+    "matched_name": "Cheshire"
+  },
+  "Cornwall": {
+    "latitude": "50.416669444444",
+    "longitude": "-4.75",
+    "wikidata_id": "Q22338583",
+    "matched_name": "Cornwall"
+  },
+  "County Durham": {
+    "latitude": "54.76055556",
+    "longitude": "-1.46555556",
+    "wikidata_id": "Q1137286",
+    "matched_name": "County Durham"
+  },
+  "Cricklewood Studios": {
+    "latitude": "51.559834",
+    "longitude": "-0.221812",
+    "wikidata_id": "Q5185077",
+    "matched_name": "Cricklewood Studios"
+  },
+  "Cumbria": {
+    "latitude": "54.5",
+    "longitude": "-3.25",
+    "wikidata_id": "Q23066",
+    "matched_name": "Cumbria"
+  },
+  "Denbighshire": {
+    "latitude": "53.125",
+    "longitude": "-3.406",
+    "wikidata_id": "Q5256625",
+    "matched_name": "Denbighshire"
+  },
+  "Denham Film Studios": {
+    "latitude": "51.584569",
+    "longitude": "-0.498902",
+    "wikidata_id": "Q3022458",
+    "matched_name": "Denham Film Studios"
+  },
+  "Derbyshire": {
+    "latitude": "53.1343916396",
+    "longitude": "-1.60280261589",
+    "wikidata_id": "Q67393503",
+    "matched_name": "Derbyshire"
+  },
+  "Devon": {
+    "latitude": "50.7528672576",
+    "longitude": "-3.81774157841",
+    "wikidata_id": "Q67393660",
+    "matched_name": "Devon"
+  },
+  "Dorset": {
+    "latitude": "50.8033949844",
+    "longitude": "-2.33458274176",
+    "wikidata_id": "Q67479793",
+    "matched_name": "Dorset"
+  },
+  "Dumfries and Galloway": {
+    "latitude": "55.07",
+    "longitude": "-3.6030555555555557",
+    "wikidata_id": "Q126514",
+    "matched_name": "Dumfries and Galloway"
+  },
+  "EMI-Elstree Studios": {},
+  "East Lothian": {
+    "latitude": "55.916666666667",
+    "longitude": "-2.75",
+    "wikidata_id": "Q207257",
+    "matched_name": "East Lothian"
+  },
+  "East Sussex": {
+    "latitude": "50.94",
+    "longitude": "0.37",
+    "wikidata_id": "Q23293",
+    "matched_name": "East Sussex"
+  },
+  "Edinburgh": {
+    "latitude": "55.95333333333333",
+    "longitude": "-3.1891666666666665",
+    "wikidata_id": "Q23436",
+    "matched_name": "Edinburgh"
+  },
+  "Elstree Film Studios": {
+    "latitude": "51.6587",
+    "longitude": "-0.2758",
+    "wikidata_id": "Q3501089",
+    "matched_name": "Elstree Studios"
+  },
+  "Elstree Studios": {
+    "latitude": "51.6587",
+    "longitude": "-0.2758",
+    "wikidata_id": "Q3501089",
+    "matched_name": "Elstree Studios"
+  },
+  "England": {
+    "latitude": "53",
+    "longitude": "-1",
+    "wikidata_id": "Q21",
+    "matched_name": "England"
+  },
+  "Essex": {
+    "latitude": "51.7772887449",
+    "longitude": "0.528394210253",
+    "wikidata_id": "Q67442940",
+    "matched_name": "Essex"
+  },
+  "Falkirk": {
+    "latitude": "55.99944444444444",
+    "longitude": "-3.7847222222222223",
+    "wikidata_id": "Q623687",
+    "matched_name": "Falkirk"
+  },
+  "Fife": {
+    "latitude": "56.25",
+    "longitude": "-3.2",
+    "wikidata_id": "Q201149",
+    "matched_name": "Fife"
+  },
+  "Glasgow": {
+    "latitude": "55.861111111111114",
+    "longitude": "-4.25",
+    "wikidata_id": "Q4093",
+    "matched_name": "Glasgow"
+  },
+  "Gloucestershire": {
+    "latitude": "51.7846207608",
+    "longitude": "-2.1811181185",
+    "wikidata_id": "Q67508687",
+    "matched_name": "Gloucestershire"
+  },
+  "Greater Manchester": {
+    "latitude": "53.5025",
+    "longitude": "-2.31",
+    "wikidata_id": "Q23099",
+    "matched_name": "Greater Manchester"
+  },
+  "Gwynedd": {
+    "latitude": "52.833333333333",
+    "longitude": "-3.9166666666667",
+    "wikidata_id": "Q109128",
+    "matched_name": "Gwynedd"
+  },
+  "Hampshire": {
+    "latitude": "51.0200783075",
+    "longitude": "-1.29308672495",
+    "wikidata_id": "Q67531563",
+    "matched_name": "Hampshire"
+  },
+  "Harrogate": {
+    "latitude": "53.991944444444",
+    "longitude": "-1.5377777777778",
+    "wikidata_id": "Q215829",
+    "matched_name": "Harrogate"
+  },
+  "Hertfordshire": {
+    "latitude": "51.829446229",
+    "longitude": "-0.218293182997",
+    "wikidata_id": "Q67532100",
+    "matched_name": "Hertfordshire"
+  },
+  "Highbury Studios": {
+    "latitude": "51.552",
+    "longitude": "-0.097",
+    "wikidata_id": "Q16984076",
+    "matched_name": "Highbury Studios"
+  },
+  "Highland (council area)": {
+    "latitude": "57.5",
+    "longitude": "-5",
+    "wikidata_id": "Q208279",
+    "matched_name": "Highland"
+  },
+  "Imperial Studios, Elstree": {},
+  "Isleworth Studios": {
+    "latitude": "51.4751",
+    "longitude": "-0.3407",
+    "wikidata_id": "Q6084299",
+    "matched_name": "Isleworth Studios"
+  },
+  "Kensington Studios": {},
+  "Kent": {
+    "latitude": "51.2489089239",
+    "longitude": "0.674513689133",
+    "wikidata_id": "Q67479626",
+    "matched_name": "Kent"
+  },
+  "Kew Bridge Studios": {
+    "latitude": "51.489",
+    "longitude": "-0.287",
+    "wikidata_id": "Q6397883",
+    "matched_name": "Kew Bridge Studios"
+  },
+  "Kingston upon Hull": {
+    "latitude": "53.74444444444445",
+    "longitude": "-0.33249999999999996",
+    "wikidata_id": "Q128147",
+    "matched_name": "Kingston upon Hull"
+  },
+  "Lancashire": {
+    "latitude": "53.7778251344",
+    "longitude": "-2.65990398961",
+    "wikidata_id": "Q67311452",
+    "matched_name": "Lancashire"
+  },
+  "Leeds": {
+    "latitude": "53.7975",
+    "longitude": "-1.5436111111111113",
+    "wikidata_id": "Q39121",
+    "matched_name": "Leeds"
+  },
+  "Lime Grove Studios": {
+    "latitude": "51.503611111111",
+    "longitude": "-0.22722222222222",
+    "wikidata_id": "Q3444510",
+    "matched_name": "Lime Grove Studios"
+  },
+  "Lincolnshire": {
+    "latitude": "53.185351067",
+    "longitude": "-0.288561568995",
+    "wikidata_id": "Q67533486",
+    "matched_name": "Lincolnshire"
+  },
+  "Liverpool": {
+    "latitude": "53.407222222222224",
+    "longitude": "-2.9916666666666667",
+    "wikidata_id": "Q24826",
+    "matched_name": "Liverpool"
+  },
+  "London": {
+    "latitude": "51.507222222222",
+    "longitude": "-0.1275",
+    "wikidata_id": "Q84",
+    "matched_name": "London"
+  },
+  "Longcross Studios": {
+    "latitude": "51.3817",
+    "longitude": "-0.592833",
+    "wikidata_id": "Q6673670",
+    "matched_name": "Longcross Studios"
+  },
+  "MGM-British Studios": {},
+  "Manchester": {
+    "latitude": "53.466666666667",
+    "longitude": "-2.2333333333333",
+    "wikidata_id": "Q18125",
+    "matched_name": "Manchester"
+  },
+  "Marylebone Studios": {
+    "latitude": "51.52072482522514",
+    "longitude": "-0.16518298803514145",
+    "wikidata_id": "Q65120455",
+    "matched_name": "Marylebone Studios"
+  },
+  "Merseyside": {
+    "latitude": "53.416666666667",
+    "longitude": "-3",
+    "wikidata_id": "Q23100",
+    "matched_name": "Merseyside"
+  },
+  "Middlesbrough": {
+    "latitude": "54.573888888889",
+    "longitude": "-1.2333333333333",
+    "wikidata_id": "Q171866",
+    "matched_name": "Middlesbrough"
+  },
+  "Nettlefold Studios": {},
+  "New Elstree Studios": {
+    "latitude": "51.6427",
+    "longitude": "-0.3146",
+    "wikidata_id": "Q110913981",
+    "matched_name": "New Elstree Studios"
+  },
+  "Norfolk": {
+    "latitude": "52.6727178",
+    "longitude": "0.9486696499999999",
+    "wikidata_id": "Q67535211",
+    "matched_name": "Norfolk"
+  },
+  "North Yorkshire": {
+    "latitude": "54.1",
+    "longitude": "-1.35",
+    "wikidata_id": "Q23086",
+    "matched_name": "North Yorkshire"
+  },
+  "Northamptonshire": {
+    "latitude": "52.3332218873",
+    "longitude": "-0.820238037407",
+    "wikidata_id": "Q67311402",
+    "matched_name": "Northamptonshire"
+  },
+  "Northern Ireland": {
+    "latitude": "54.6075",
+    "longitude": "-6.6925",
+    "wikidata_id": "Q26",
+    "matched_name": "Northern Ireland"
+  },
+  "Northumberland": {
+    "latitude": "55.2307695605",
+    "longitude": "-2.05060229526",
+    "wikidata_id": "Q67535553",
+    "matched_name": "Northumberland"
+  },
+  "Nottinghamshire": {
+    "latitude": "53.1301689818",
+    "longitude": "-1.01191850012",
+    "wikidata_id": "Q67535681",
+    "matched_name": "Nottinghamshire"
+  },
+  "Oxford": {
+    "latitude": "51.751944444444",
+    "longitude": "-1.2577777777778",
+    "wikidata_id": "Q34217",
+    "matched_name": "Oxford"
+  },
+  "Oxfordshire": {
+    "latitude": "51.8084711936",
+    "longitude": "-1.28715586244",
+    "wikidata_id": "Q67311417",
+    "matched_name": "Oxfordshire"
+  },
+  "Pembrokeshire": {
+    "latitude": "51.845",
+    "longitude": "-4.8422222222222",
+    "wikidata_id": "Q213361",
+    "matched_name": "Pembrokeshire"
+  },
+  "Pinewood Studios": {
+    "latitude": "51.548611111111",
+    "longitude": "-0.535",
+    "wikidata_id": "Q661896",
+    "matched_name": "Pinewood Studios"
+  },
+  "Powys": {},
+  "Ripon": {
+    "latitude": "54.13744",
+    "longitude": "-1.54126",
+    "wikidata_id": "Q33848432",
+    "matched_name": "Ripon"
+  },
+  "Riverside Studios": {
+    "latitude": "51.48830556",
+    "longitude": "-0.22808333",
+    "wikidata_id": "Q7338619",
+    "matched_name": "Riverside Studios"
+  },
+  "Rock Studios": {},
+  "Rotherham": {
+    "latitude": "53.430833333333",
+    "longitude": "-1.3547222222222",
+    "wikidata_id": "Q1878732",
+    "matched_name": "Rotherham"
+  },
+  "Scarborough": {
+    "latitude": "54.28",
+    "longitude": "-0.402",
+    "wikidata_id": "Q894092",
+    "matched_name": "Scarborough"
+  },
+  "Scarborough, North Yorkshire": {
+    "latitude": "54.28",
+    "longitude": "-0.402",
+    "wikidata_id": "Q894092",
+    "matched_name": "Scarborough"
+  },
+  "Scotland": {
+    "latitude": "57",
+    "longitude": "-5",
+    "wikidata_id": "Q22",
+    "matched_name": "Scotland"
+  },
+  "Sheffield": {
+    "latitude": "53.380833333333335",
+    "longitude": "-1.4702777777777778",
+    "wikidata_id": "Q42448",
+    "matched_name": "Sheffield"
+  },
+  "Shepperton Studios": {},
+  "Shinfield Studios": {
+    "latitude": "51.41638888888889",
+    "longitude": "-0.9380611111111111",
+    "wikidata_id": "Q117562434",
+    "matched_name": "Shinfield Studios"
+  },
+  "Shropshire": {
+    "latitude": "52.6423916913",
+    "longitude": "-2.71480132553",
+    "wikidata_id": "Q67574371",
+    "matched_name": "Shropshire"
+  },
+  "Somerset": {
+    "latitude": "51.1499346516",
+    "longitude": "-2.87813661946",
+    "wikidata_id": "Q67461071",
+    "matched_name": "Somerset"
+  },
+  "South Yorkshire": {
+    "latitude": "53.5",
+    "longitude": "-1.3333333333333",
+    "wikidata_id": "Q23095",
+    "matched_name": "South Yorkshire"
+  },
+  "Southall Studios": {
+    "latitude": "51.504",
+    "longitude": "-0.3838",
+    "wikidata_id": "Q7569073",
+    "matched_name": "Southall Studios"
+  },
+  "Staffordshire": {
+    "latitude": "52.8241709691",
+    "longitude": "-2.04361212837",
+    "wikidata_id": "Q67574558",
+    "matched_name": "Staffordshire"
+  },
+  "Station Road Studios, Elstree": {},
+  "Stirling (council area)": {
+    "latitude": "56.2533",
+    "longitude": "-4.3259",
+    "wikidata_id": "Q217838",
+    "matched_name": "Stirling"
+  },
+  "Suffolk": {
+    "latitude": "52.2243372093",
+    "longitude": "1.07001375197",
+    "wikidata_id": "Q67574715",
+    "matched_name": "Suffolk"
+  },
+  "Surrey": {
+    "latitude": "51.2694589239",
+    "longitude": "-0.373297931467",
+    "wikidata_id": "Q67443130",
+    "matched_name": "Surrey"
+  },
+  "Sussex": {
+    "latitude": "50.9471026998",
+    "longitude": "-0.141372694746",
+    "wikidata_id": "Q23346",
+    "matched_name": "Sussex"
+  },
+  "Swansea": {
+    "latitude": "51.616666666667",
+    "longitude": "-3.95",
+    "wikidata_id": "Q23051",
+    "matched_name": "Swansea"
+  },
+  "Teddington Studios": {
+    "latitude": "51.4287",
+    "longitude": "-0.3217",
+    "wikidata_id": "Q7693957",
+    "matched_name": "Teddington Studios"
+  },
+  "Twickenham Film Studios": {},
+  "Tyne and Wear": {
+    "latitude": "54.974",
+    "longitude": "-1.6132",
+    "wikidata_id": "Q23080",
+    "matched_name": "Tyne and Wear"
+  },
+  "Versa Studios": {},
+  "Wakefield": {
+    "latitude": "53.6825",
+    "longitude": "-1.4975",
+    "wikidata_id": "Q216638",
+    "matched_name": "Wakefield"
+  },
+  "Wales": {
+    "latitude": "52.35",
+    "longitude": "-3.6333333333333",
+    "wikidata_id": "Q25",
+    "matched_name": "Wales"
+  },
+  "Walthamstow Studios": {
+    "latitude": "51.584",
+    "longitude": "-0.021",
+    "wikidata_id": "Q7966635",
+    "matched_name": "Walthamstow Studios"
+  },
+  "Warner Bros. Studios Leavesden": {},
+  "Warwickshire": {
+    "latitude": "52.3335005665",
+    "longitude": "-1.58600847016",
+    "wikidata_id": "Q67575123",
+    "matched_name": "Warwickshire"
+  },
+  "Welwyn Studios": {},
+  "Wembley Studios": {},
+  "West Sussex": {
+    "latitude": "50.916666666667",
+    "longitude": "-0.5",
+    "wikidata_id": "Q23287",
+    "matched_name": "West Sussex"
+  },
+  "West Yorkshire": {
+    "latitude": "53.75",
+    "longitude": "-1.6666666666667",
+    "wikidata_id": "Q23083",
+    "matched_name": "West Yorkshire"
+  },
+  "Wiltshire": {
+    "latitude": "51.3146111812",
+    "longitude": "-1.92980645382",
+    "wikidata_id": "Q67575300",
+    "matched_name": "Wiltshire"
+  },
+  "Worcestershire": {
+    "latitude": "52.2393590725",
+    "longitude": "-2.16339676927",
+    "wikidata_id": "Q67575442",
+    "matched_name": "Worcestershire"
+  },
+  "York": {
+    "latitude": "53.95",
+    "longitude": "-1.0833333333333",
+    "wikidata_id": "Q42462",
+    "matched_name": "York"
+  },
+  "Yorkshire": {
+    "latitude": "53.958333333333",
+    "longitude": "-1.0833333333333",
+    "wikidata_id": "Q163",
+    "matched_name": "Yorkshire"
+  },
+  "the East Riding of Yorkshire": {
+    "latitude": "53.897",
+    "longitude": "-0.493",
+    "wikidata_id": "Q2194352",
+    "matched_name": "East Riding of Yorkshire"
+  },
+  "the Outer Hebrides": {
+    "latitude": "57.76",
+    "longitude": "-7.02",
+    "wikidata_id": "Q80967",
+    "matched_name": "Outer Hebrides"
+  },
+  "the Scottish Borders": {
+    "latitude": "55.36",
+    "longitude": "-2.49",
+    "wikidata_id": "Q211113",
+    "matched_name": "Scottish Borders"
+  },
+  "the United Kingdom": {
+    "latitude": "54.6",
+    "longitude": "-2",
+    "wikidata_id": "Q145",
+    "matched_name": "United Kingdom"
+  }
+}

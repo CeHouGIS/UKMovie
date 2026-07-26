@@ -5,4 +5,5 @@ node_modules/
 .open-next/
 .wrangler/
 out/
+data_sources/os_open_names/*.zip
 *.log

@@ -7,6 +7,8 @@
 - `uk_filming_locations.csv`：适合 Excel、数据库和数据分析。
 - `uk_filming_locations.geojson`：适合 QGIS、ArcGIS、Mapbox、Kepler.gl。
 - `wikipedia_uk_filming_categories.csv`：Wikipedia 社区分类补充表。
+- `wikipedia_location_coordinates.csv`：社区分类地点的坐标映射和匹配来源。
+- `wikipedia_uk_filming_categories_geocoded.csv`：已补充坐标的社区分类记录。
 - `wikipedia_category_metadata.json`：社区分类补充表统计和许可。
 - `metadata.json`：记录数量、生成时间和许可说明。
 - `download_uk_filming_locations.py`：从 Wikidata 重新下载最新版数据。
@@ -27,6 +29,10 @@
 另有一份开放的 Wikipedia 社区分类补充表，包含 8,614 条“作品—拍摄分类”
 关系，涉及 6,443 个页面。分类名称能提供英国、构成国、城市、郡或制片厂级
 位置，但通常没有精确坐标。该表采用 CC BY-SA 4.0，与 CC0 主表分开保存。
+
+通过 Wikidata 与 GeoNames 英国地名包，目前已为其中 103 种分类地点匹配坐标，
+覆盖 6,570 条作品—地点记录。补充坐标属于城市、地区或制片厂代表点，不能视为
+摄影机精确机位。
 
 ## 时间码
 
