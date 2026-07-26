@@ -1,0 +1,20 @@
+{
+  "name": "ukmovie-map",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:worker": "opennextjs-cloudflare build"
+  },
+  "dependencies": {
+    "leaflet": "1.9.4",
+    "next": "16.2.12",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "1.20.2"
+  }
+}

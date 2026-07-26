@@ -1,2 +1,7 @@
 __pycache__/
 *.py[cod]
+node_modules/
+.next/
+.open-next/
+.wrangler/
+*.log
