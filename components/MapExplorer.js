@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 
 const TYPE_NAMES = {
@@ -72,6 +72,7 @@ export default function MapExplorer() {
   const mapNode = useRef(null);
   const mapRef = useRef(null);
   const layerRef = useRef(null);
+  const rendererRef = useRef(null);
   const markerRefs = useRef(new Map());
   const [features, setFeatures] = useState([]);
   const [query, setQuery] = useState("");
@@ -81,6 +82,7 @@ export default function MapExplorer() {
   const [loading, setLoading] = useState(true);
   const [dataError, setDataError] = useState("");
   const [mapReady, setMapReady] = useState(false);
+  const deferredQuery = useDeferredValue(query);
 
   useEffect(() => {
     fetch(`${BASE_PATH}/data/uk_filming_locations.geojson`)
@@ -94,7 +96,7 @@ export default function MapExplorer() {
   }, []);
 
   const filtered = useMemo(() => {
-    const needle = query.trim().toLocaleLowerCase();
+    const needle = deferredQuery.trim().toLocaleLowerCase();
     return features.filter((feature) => {
       const p = feature.properties;
       const year = yearOf(feature);
@@ -112,7 +114,7 @@ export default function MapExplorer() {
         );
       return matchesQuery && matchesType && matchesYear && matchesPrecision;
     });
-  }, [features, query, typeGroup, yearRange, onlyPrecise]);
+  }, [features, deferredQuery, typeGroup, yearRange, onlyPrecise]);
 
   const groups = useMemo(() => {
     const grouped = new Map();
@@ -153,6 +155,7 @@ export default function MapExplorer() {
       }).addTo(map);
       mapRef.current = map;
       layerRef.current = L.layerGroup().addTo(map);
+      rendererRef.current = L.canvas({ padding: 0.35 });
       setMapReady(true);
     });
     return () => {
@@ -160,12 +163,13 @@ export default function MapExplorer() {
       mapRef.current?.remove();
       mapRef.current = null;
       layerRef.current = null;
+      rendererRef.current = null;
       setMapReady(false);
     };
   }, []);
 
   useEffect(() => {
-    if (!mapRef.current || !layerRef.current) return;
+    if (!mapRef.current || !layerRef.current || !rendererRef.current) return;
     let active = true;
     import("leaflet").then(({ default: L }) => {
       if (!active || !layerRef.current) return;
@@ -175,7 +179,7 @@ export default function MapExplorer() {
         const count = group.items.length;
         const radius = Math.max(6, Math.min(18, 5 + Math.log2(count + 1) * 2.1));
         const marker = L.circleMarker([group.lat, group.lng], {
-          renderer: L.canvas(),
+          renderer: rendererRef.current,
           radius,
           color: "#fff8e7",
           weight: 1.5,
@@ -186,7 +190,7 @@ export default function MapExplorer() {
           `<strong>${escapeHtml(group.location)}</strong><br>${count} 条作品记录`,
           { direction: "top", offset: [0, -radius], opacity: 0.94 }
         );
-        marker.bindPopup(popupHtml(group), { maxWidth: 360, minWidth: 260 });
+        marker.bindPopup(() => popupHtml(group), { maxWidth: 360, minWidth: 260 });
         marker.addTo(layerRef.current);
         markerRefs.current.set(group.key, marker);
       });
