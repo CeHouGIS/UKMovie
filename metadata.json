@@ -1,0 +1,10 @@
+{
+  "generated_at_utc": "2026-07-26T06:48:09Z",
+  "license": "Wikidata structured data: CC0",
+  "rows": 2849,
+  "unique_works": 1854,
+  "rows_with_coordinates": 2849,
+  "rows_with_address": 174,
+  "rows_with_release_date": 2328,
+  "note": "Timecode columns are intentionally blank because Wikidata does not provide reliable scene-level timestamps. Coordinates can represent a city/region centroid when the source location is not a precise site."
+}

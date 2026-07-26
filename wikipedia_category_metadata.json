@@ -1,0 +1,8 @@
+{
+  "generated_at_utc": "2026-07-26T07:50:21Z",
+  "license": "CC BY-SA 4.0",
+  "rows": 8614,
+  "unique_wikipedia_pages": 6443,
+  "rows_with_year_in_title": 2128,
+  "note": "Locations are inferred from Wikipedia category names and can be broad. This is a separate lower-precision supplement, not scene-level data. Wikidata/IMDb enrichment was left blank because the public API rate limited the large batch; years are retained when present in page titles."
+}
