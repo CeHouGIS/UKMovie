@@ -35,6 +35,8 @@ const TYPE_GROUPS = {
   }
 };
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 function yearOf(feature) {
   const year = Number(feature.properties.release_or_first_broadcast_date?.slice(0, 4));
   return Number.isFinite(year) && year > 1800 ? year : null;
@@ -81,7 +83,7 @@ export default function MapExplorer() {
   const [mapReady, setMapReady] = useState(false);
 
   useEffect(() => {
-    fetch("/data/uk_filming_locations.geojson")
+    fetch(`${BASE_PATH}/data/uk_filming_locations.geojson`)
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();
@@ -223,7 +225,7 @@ export default function MapExplorer() {
           <a href="https://github.com/CeHouGIS/UKMovie" target="_blank" rel="noreferrer">
             GitHub ↗
           </a>
-          <a href="/data/uk_filming_locations.csv" download>
+          <a href={`${BASE_PATH}/data/uk_filming_locations.csv`} download>
             下载数据 ↓
           </a>
         </nav>
