@@ -20,6 +20,7 @@ INPUT = ROOT / "wikipedia_uk_filming_categories.csv"
 GEONAMES_ZIP = ROOT / "data_sources/geonames/GB.zip"
 LOCATION_OUTPUT = ROOT / "wikipedia_location_coordinates.csv"
 RECORD_OUTPUT = ROOT / "wikipedia_uk_filming_categories_geocoded.csv"
+GEOJSON_OUTPUT = ROOT / "wikipedia_uk_filming_categories_geocoded.geojson"
 CACHE = ROOT / "data_sources/wikidata_location_cache.json"
 USER_AGENT = "UKMovieData/1.0 (https://github.com/CeHouGIS/UKMovie)"
 
@@ -223,6 +224,50 @@ def main() -> None:
                 }
             )
 
+    features = []
+    for row in records:
+        match = mappings[row["location_text_from_category"]]
+        if not match["latitude"]:
+            continue
+        category = row["source_category"].lower()
+        work_type = "television series" if "television" in category else "film"
+        features.append(
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        float(match["longitude"]),
+                        float(match["latitude"]),
+                    ],
+                },
+                "properties": {
+                    "work_wikidata_id": row["work_wikidata_id"],
+                    "work_name": row["work_name_en"],
+                    "work_type": work_type,
+                    "release_or_first_broadcast_date": row[
+                        "release_or_first_broadcast_date"
+                    ],
+                    "location_name": row["location_text_from_category"],
+                    "address": "",
+                    "imdb_id": row["imdb_id"],
+                    "wikipedia_url": row["wikipedia_url"],
+                    "source_category": row["source_category"],
+                    "data_source": row["data_source"],
+                    "record_source": "community",
+                    "coordinate_precision": match["coordinate_precision"],
+                },
+            }
+        )
+    GEOJSON_OUTPUT.write_text(
+        json.dumps(
+            {"type": "FeatureCollection", "features": features},
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ),
+        encoding="utf-8",
+    )
+
     matched = sum(bool(row["latitude"]) for row in mappings.values())
     matched_records = sum(
         bool(mappings[row["location_text_from_category"]]["latitude"]) for row in records
@@ -231,6 +276,7 @@ def main() -> None:
     print(f"Filming records geocoded: {matched_records}/{len(records)}")
     print(f"Wrote {LOCATION_OUTPUT.name}")
     print(f"Wrote {RECORD_OUTPUT.name}")
+    print(f"Wrote {GEOJSON_OUTPUT.name}")
 
 
 if __name__ == "__main__":

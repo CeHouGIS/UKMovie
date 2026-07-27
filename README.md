@@ -9,6 +9,7 @@
 - `wikipedia_uk_filming_categories.csv`：Wikipedia 社区分类补充表。
 - `wikipedia_location_coordinates.csv`：社区分类地点的坐标映射和匹配来源。
 - `wikipedia_uk_filming_categories_geocoded.csv`：已补充坐标的社区分类记录。
+- `wikipedia_uk_filming_categories_geocoded.geojson`：网站使用的社区分类地图图层。
 - `wikipedia_category_metadata.json`：社区分类补充表统计和许可。
 - `metadata.json`：记录数量、生成时间和许可说明。
 - `download_uk_filming_locations.py`：从 Wikidata 重新下载最新版数据。

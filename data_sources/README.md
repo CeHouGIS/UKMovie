@@ -35,6 +35,8 @@ python3 enrich_wikipedia_locations.py
 - `wikipedia_location_coordinates.csv`：122 种分类地点的坐标映射；
 - `wikipedia_uk_filming_categories_geocoded.csv`：带坐标、坐标来源和精度说明的
   8,614 条民间分类记录。
+- `wikipedia_uk_filming_categories_geocoded.geojson`：供网站地图直接加载的 6,570
+  条已匹配记录。
 
 当前有 103 种分类地点获得坐标，覆盖 6,570 条作品—地点记录和 4,882 个不同
 Wikipedia 页面。未能可靠匹配的 19 种地点主要是已经停用、改名或同名的制片厂。

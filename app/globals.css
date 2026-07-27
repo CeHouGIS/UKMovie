@@ -185,6 +185,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dot.low { background: var(--gold); }
 .dot.mid { background: #ff8b45; }
 .dot.high { background: #ff5b35; }
+.dot.community { background: #3f9b84; }
 .map-note { top: 18px; right: 18px; max-width: 260px; padding: 11px 13px; }
 .map-note strong, .map-note span { display: block; }
 .map-note strong { margin-bottom: 3px; color: var(--orange); font-size: 9px; letter-spacing: .08em; }
@@ -208,7 +209,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .intro > p:last-child { display: none; }
   .metrics { margin: 0 18px; }
   .filters { padding: 14px 18px; }
-  .filter-block:nth-of-type(2), .toggle-row, .reset-button { display: none; }
+  .year-filter, .toggle-row, .reset-button { display: none; }
   .location-list { display: none; }
   .map-panel { height: calc(100vh - 64px - 340px); min-height: 46vh; }
   .map-note { display: none; }
