@@ -14,6 +14,7 @@
 - `metadata.json`：记录数量、生成时间和许可说明。
 - `download_uk_filming_locations.py`：从 Wikidata 重新下载最新版数据。
 - `download_wikipedia_uk_filming_categories.py`：重新下载 Wikipedia 分类数据。
+- `uk_filming_work_catalog.csv`：按作品去重的名称、上映/首播日期和 IMDb ID目录。
 
 ## 数据范围
 
@@ -40,6 +41,19 @@
 `episode_timecode_start` 和 `episode_timecode_end` 已预留但为空。Wikidata
 没有系统记录某个地点在影片中出现的分钟、秒数。时间码需要从字幕、视频内容、
 剧本或人工核验中补充，不能由上映日期或取景地信息推断。
+
+### 授权字幕管线
+
+`download_subtitles.py` 使用 OpenSubtitles 官方 API，按主表中的 IMDb ID 搜索
+授权账号可下载的英文字幕。脚本默认只做 dry-run；只有提供 `--execute` 时才访问
+API，并默认最多搜索 20 部、下载 5 个文件。字幕正文、API 缓存和逐条对白索引
+保存在被 Git 忽略的 `subtitle_output/`，不会提交或随网站发布。
+
+```bash
+python3 download_subtitles.py
+python3 download_subtitles.py --execute --search-only
+python3 download_subtitles.py --execute --max-searches 20 --max-downloads 5
+```
 
 ## 注意
 

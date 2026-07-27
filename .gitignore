@@ -6,4 +6,6 @@ node_modules/
 .wrangler/
 out/
 data_sources/os_open_names/*.zip
+.env.subtitles
+subtitle_output/
 *.log
