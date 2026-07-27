@@ -15,6 +15,8 @@
 - `download_uk_filming_locations.py`：从 Wikidata 重新下载最新版数据。
 - `download_wikipedia_uk_filming_categories.py`：重新下载 Wikipedia 分类数据。
 - `uk_filming_work_catalog.csv`：按作品去重的名称、上映/首播日期和 IMDb ID目录。
+- `uk_filming_film_catalog.csv`：严格电影类型目录，不含电视电影。
+- `uk_filming_tv_catalog.csv`：电视剧、电视电影、季度、单集和特别节目目录。
 
 ## 数据范围
 
