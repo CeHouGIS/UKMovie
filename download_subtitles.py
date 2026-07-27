@@ -138,10 +138,12 @@ def download_file(url: str, destination: Path) -> None:
 
 
 def timestamp_ms(value: str) -> int:
-    match = re.fullmatch(r"(\d{1,2}):(\d{2}):(\d{2})[,.](\d{3})", value.strip())
+    match = re.fullmatch(r"(\d{1,2}):(\d{2}):(\d{2})[,.](\d{2,3})", value.strip())
     if not match:
         raise ValueError(value)
-    hours, minutes, seconds, millis = map(int, match.groups())
+    hours, minutes, seconds = map(int, match.groups()[:3])
+    fraction = match.group(4)
+    millis = int(fraction) * (10 if len(fraction) == 2 else 1)
     return ((hours * 60 + minutes) * 60 + seconds) * 1000 + millis
 
 
@@ -149,8 +151,8 @@ def parse_cues(path: Path) -> list[dict]:
     text = path.read_text(encoding="utf-8-sig", errors="replace").replace("\r\n", "\n")
     pattern = re.compile(
         r"(?m)^(?:\d+\n)?"
-        r"(?P<start>\d{1,2}:\d{2}:\d{2}[,.]\d{3})\s+-->\s+"
-        r"(?P<end>\d{1,2}:\d{2}:\d{2}[,.]\d{3})[^\n]*\n"
+        r"(?P<start>\d{1,2}:\d{2}:\d{2}[,.]\d{2,3})\s+-->\s+"
+        r"(?P<end>\d{1,2}:\d{2}:\d{2}[,.]\d{2,3})[^\n]*\n"
         r"(?P<text>.*?)(?=\n{2,}|\Z)",
         re.S,
     )

@@ -57,6 +57,11 @@ python3 download_subtitles.py --execute --search-only
 python3 download_subtitles.py --execute --max-searches 20 --max-downloads 5
 ```
 
+`search_internet_archive_subtitles.py` 使用 Internet Archive 无密钥搜索 API，只匹配
+`feature_films` 中明确标注 Public Domain 或 Creative Commons 且带 SRT/VTT 的
+条目。字幕文件保存在 `subtitle_output/`，匹配元数据写入
+`internet_archive_subtitle_matches.csv`。
+
 ## 注意
 
 - `release_or_first_broadcast_date` 取该作品在 Wikidata 中记录的最早日期。
