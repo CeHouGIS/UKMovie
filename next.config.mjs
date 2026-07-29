@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
+const isSitesBuild = process.env.SITES_BUILD === "true";
 const basePath = isGitHubPages ? "/UKMovie" : "";
 
 const nextConfig = {
   reactStrictMode: true,
-  output: "export",
+  output: isSitesBuild ? "standalone" : "export",
   trailingSlash: true,
   basePath,
   assetPrefix: basePath,

@@ -53,6 +53,17 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .brand h1 { margin: 0; font: 700 21px/1.1 Georgia, "Noto Serif SC", serif; }
 
 .topbar nav { display: flex; align-items: center; gap: 22px; }
+.nav-view {
+  padding: 5px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+.nav-view:hover, .nav-view.active { color: var(--ink); border-color: var(--orange); }
 .topbar a {
   color: var(--ink);
   text-decoration: none;
@@ -63,6 +74,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .topbar a:hover { border-color: var(--orange); }
 
 .workspace { flex: 1; min-height: 0; display: grid; grid-template-columns: 430px 1fr; }
+.workspace.view-hidden { display: none; }
 .sidebar {
   height: calc(100vh - 76px);
   overflow: hidden;
@@ -194,6 +206,41 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .loading-shell { min-height: 100vh; display: grid; place-content: center; justify-items: center; gap: 16px; background: var(--paper); }
 .loading-mark { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: var(--forest); color: white; font: 800 18px Georgia, serif; animation: pulse 1.2s ease-in-out infinite; }
 .loading-shell p { margin: 0; color: var(--muted); font-size: 12px; }
+
+.subtitle-view { min-height: calc(100vh - 76px); background: var(--paper); }
+.subtitle-hero { padding: 42px clamp(24px, 5vw, 72px) 30px; border-bottom: 1px solid var(--line); background: var(--cream); }
+.subtitle-hero h2 { margin: 0; font: 700 clamp(30px, 4vw, 52px)/1.05 Georgia, "Noto Serif SC", serif; }
+.subtitle-hero > p:not(.eyebrow) { max-width: 740px; margin: 14px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.subtitle-metrics { display: grid; grid-template-columns: repeat(3, minmax(100px, 180px)); margin-top: 24px; }
+.subtitle-metrics div { padding: 0 22px; border-left: 1px solid var(--line); }
+.subtitle-metrics div:first-child { padding-left: 0; border-left: 0; }
+.subtitle-metrics strong, .subtitle-metrics span { display: block; }
+.subtitle-metrics strong { color: var(--forest); font: 700 28px/1 Georgia, serif; }
+.subtitle-metrics span { margin-top: 6px; color: var(--muted); font-size: 10px; }
+.subtitle-search { display: block; max-width: 720px; margin-top: 26px; }
+.subtitle-search span { display: block; margin-bottom: 7px; color: var(--muted); font-size: 10px; font-weight: 700; }
+.subtitle-search input { width: 100%; height: 46px; padding: 0 14px; border: 1px solid var(--line); outline: none; background: white; color: var(--ink); }
+.subtitle-search input:focus { border-color: var(--forest); box-shadow: 0 0 0 2px rgba(21, 63, 53, .09); }
+.subtitle-results { padding: 24px clamp(24px, 5vw, 72px) 60px; }
+.subtitle-results-head { display: flex; justify-content: space-between; margin-bottom: 18px; color: var(--muted); font-size: 11px; }
+.subtitle-results-head strong { color: var(--ink); }
+.subtitle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; }
+.subtitle-card { min-width: 0; padding: 18px; border: 1px solid var(--line); background: var(--cream); }
+.subtitle-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+.subtitle-card-head span { color: var(--orange); font-size: 9px; font-weight: 800; letter-spacing: .05em; }
+.subtitle-card-head h3 { margin: 5px 0 0; font: 700 19px/1.2 Georgia, "Noto Serif SC", serif; }
+.subtitle-card-head a { flex: none; color: var(--forest); font-size: 9px; text-decoration: none; }
+.candidate-list details { border-bottom: 1px solid #e8e1d5; }
+.candidate-list details:last-child { border-bottom: 0; }
+.candidate-list summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 11px 0; cursor: pointer; list-style-position: outside; }
+.candidate-list summary span { overflow: hidden; color: var(--ink); font-size: 11px; white-space: nowrap; text-overflow: ellipsis; }
+.candidate-list summary b { color: var(--muted); font-size: 9px; }
+.candidate-detail { padding: 0 0 12px 16px; color: var(--muted); font-size: 9px; line-height: 1.5; }
+.candidate-detail p { margin: 4px 0; overflow-wrap: anywhere; }
+.candidate-detail ul { max-height: 120px; margin: 8px 0 0; padding-left: 16px; overflow: auto; }
+.candidate-detail li { margin: 3px 0; overflow-wrap: anywhere; }
+.subtitle-more { display: block; margin: 24px auto 0; padding: 11px 22px; border: 1px solid var(--forest); background: transparent; color: var(--forest); cursor: pointer; font-size: 11px; font-weight: 700; }
+.subtitle-more:hover { background: var(--forest); color: white; }
 @keyframes pulse { 50% { transform: scale(.92); opacity: .78; } }
 
 @media (max-width: 900px) {
@@ -202,6 +249,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .brand h1 { font-size: 17px; }
   .brand-mark { width: 36px; height: 36px; }
   .topbar nav a:first-child { display: none; }
+  .topbar nav { gap: 12px; }
+  .nav-view { font-size: 11px; }
   .workspace { display: block; }
   .sidebar { height: auto; max-height: 54vh; border-right: 0; border-bottom: 1px solid var(--line); }
   .intro { padding: 18px 18px 12px; }
@@ -213,11 +262,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .location-list { display: none; }
   .map-panel { height: calc(100vh - 64px - 340px); min-height: 46vh; }
   .map-note { display: none; }
+  .subtitle-view { min-height: calc(100vh - 64px); }
+  .subtitle-hero { padding: 26px 18px 22px; }
+  .subtitle-metrics { grid-template-columns: repeat(3, 1fr); }
+  .subtitle-metrics div { padding: 0 10px; }
+  .subtitle-metrics strong { font-size: 22px; }
+  .subtitle-results { padding: 18px 12px 40px; }
+  .subtitle-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 520px) {
   .topbar nav { gap: 0; }
   .topbar a { font-size: 11px; }
+  .topbar nav a { display: none; }
+  .nav-view { margin-left: 12px; }
   .intro h2 { max-width: 320px; }
   .map-legend { left: 10px; bottom: 10px; }
 }
