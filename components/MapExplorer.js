@@ -100,7 +100,13 @@ export default function MapExplorer() {
   const [loading, setLoading] = useState(true);
   const [dataError, setDataError] = useState("");
   const [mapReady, setMapReady] = useState(false);
+  const [view, setView] = useState("map");
+  const [subtitleData, setSubtitleData] = useState(null);
+  const [subtitleQuery, setSubtitleQuery] = useState("");
+  const [subtitleError, setSubtitleError] = useState("");
+  const [subtitleLimit, setSubtitleLimit] = useState(80);
   const deferredQuery = useDeferredValue(query);
+  const deferredSubtitleQuery = useDeferredValue(subtitleQuery);
 
   useEffect(() => {
     const load = (path) =>
@@ -126,6 +132,28 @@ export default function MapExplorer() {
       .catch(() => setDataError("地图数据加载失败，请稍后刷新。"))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (view !== "subtitles" || subtitleData || subtitleError) return;
+    fetch(`${BASE_PATH}/data/assrt_english_subtitles.json`)
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(setSubtitleData)
+      .catch(() => setSubtitleError("英文字幕元数据加载失败，请稍后刷新。"));
+  }, [view, subtitleData, subtitleError]);
+
+  const subtitleWorks = useMemo(() => {
+    const needle = deferredSubtitleQuery.trim().toLocaleLowerCase();
+    if (!subtitleData) return [];
+    return subtitleData.works.filter((work) =>
+      !needle ||
+      [work.name, work.imdb_id, work.release_date, work.type]
+        .filter(Boolean)
+        .some((value) => String(value).toLocaleLowerCase().includes(needle))
+    );
+  }, [subtitleData, deferredSubtitleQuery]);
 
   const filtered = useMemo(() => {
     const needle = deferredQuery.trim().toLocaleLowerCase();
@@ -270,6 +298,18 @@ export default function MapExplorer() {
           </div>
         </div>
         <nav>
+          <button
+            className={view === "map" ? "nav-view active" : "nav-view"}
+            onClick={() => setView("map")}
+          >
+            取景地图
+          </button>
+          <button
+            className={view === "subtitles" ? "nav-view active" : "nav-view"}
+            onClick={() => setView("subtitles")}
+          >
+            英文字幕
+          </button>
           <a href="https://github.com/CeHouGIS/UKMovie" target="_blank" rel="noreferrer">
             GitHub ↗
           </a>
@@ -279,7 +319,82 @@ export default function MapExplorer() {
         </nav>
       </header>
 
-      <section className="workspace">
+      {view === "subtitles" ? (
+        <section className="subtitle-view">
+          <div className="subtitle-hero">
+            <p className="eyebrow">ASSRT · ENGLISH SUBTITLE INDEX</p>
+            <h2>英文与多语言字幕候选</h2>
+            <p>
+              基于 ASSRT 官方 API 的检索元数据。这里仅展示包含英文的候选版本，不托管字幕正文或临时下载链接。
+            </p>
+            <div className="subtitle-metrics">
+              <div><strong>{subtitleData?.searched_records?.toLocaleString() || "—"}</strong><span>检索记录</span></div>
+              <div><strong>{subtitleData?.matched_works?.toLocaleString() || "—"}</strong><span>命中作品</span></div>
+              <div><strong>{subtitleData?.candidate_count?.toLocaleString() || "—"}</strong><span>英文候选</span></div>
+            </div>
+            <label className="subtitle-search">
+              <span>搜索片名、IMDb ID、年份或类型</span>
+              <input
+                value={subtitleQuery}
+                onChange={(event) => {
+                  setSubtitleQuery(event.target.value);
+                  setSubtitleLimit(80);
+                }}
+                placeholder="例如：Sherlock、tt1475582、2010"
+              />
+            </label>
+          </div>
+          <div className="subtitle-results">
+            <div className="subtitle-results-head">
+              <strong>{subtitleWorks.length.toLocaleString()} 部作品</strong>
+              <span>语言已筛选：英文 / 含英文多语言</span>
+            </div>
+            {!subtitleData && !subtitleError && <p className="status-text">正在读取字幕索引…</p>}
+            {subtitleError && <p className="status-text error">{subtitleError}</p>}
+            <div className="subtitle-grid">
+              {subtitleWorks.slice(0, subtitleLimit).map((work) => (
+                <article className="subtitle-card" key={`${work.imdb_id}-${work.wikidata_id}`}>
+                  <div className="subtitle-card-head">
+                    <div>
+                      <span>{work.release_date?.slice(0, 4) || "年份未知"} · {TYPE_NAMES[work.type] || work.type}</span>
+                      <h3>{work.name}</h3>
+                    </div>
+                    <a href={`https://www.imdb.com/title/${encodeURIComponent(work.imdb_id)}/`} target="_blank" rel="noreferrer">
+                      {work.imdb_id} ↗
+                    </a>
+                  </div>
+                  <div className="candidate-list">
+                    {work.candidates.map((candidate) => (
+                      <details key={candidate.id}>
+                        <summary>
+                          <span>{candidate.name || candidate.video || `字幕 ${candidate.id}`}</span>
+                          <b>{candidate.language || "含英文"} · {candidate.format || "格式未知"}</b>
+                        </summary>
+                        <div className="candidate-detail">
+                          {candidate.video && <p>适配版本：{candidate.video}</p>}
+                          <p>评分：{candidate.score ?? "—"} · 上传：{candidate.uploaded || "—"} · ASSRT ID：{candidate.id}</p>
+                          {candidate.files?.length > 0 && (
+                            <ul>{candidate.files.map((file) => <li key={file}>{file}</li>)}</ul>
+                          )}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+            {subtitleWorks.length > subtitleLimit && (
+              <button
+                className="subtitle-more"
+                onClick={() => setSubtitleLimit((current) => current + 80)}
+              >
+                再显示 {Math.min(80, subtitleWorks.length - subtitleLimit)} 部
+              </button>
+            )}
+          </div>
+        </section>
+      ) : null}
+      <section className={`workspace ${view !== "map" ? "view-hidden" : ""}`}>
         <aside className="sidebar">
           <section className="intro">
             <p className="eyebrow">UNITED KINGDOM · 影视地理档案</p>
