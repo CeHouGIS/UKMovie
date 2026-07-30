@@ -7,10 +7,12 @@ import json
 from pathlib import Path
 
 SOURCE = Path("subtitle_output/assrt/search_results_english.jsonl")
+OVERRIDES = Path("data_sources/assrt_manual_overrides.json")
 OUTPUT = Path("public/data/assrt_english_subtitles.json")
 
 
 def main() -> None:
+    overrides = json.loads(OVERRIDES.read_text(encoding="utf-8"))
     works = []
     searched = 0
     api_success = 0
@@ -24,32 +26,40 @@ def main() -> None:
             imdb_id = str(record.get("imdb_id") or "")
             if not (imdb_id.startswith("tt") and imdb_id[2:].isdigit()):
                 invalid_imdb += 1
-            candidates = []
-            for candidate in record.get("candidates") or []:
-                candidates.append(
-                    {
-                        "id": candidate.get("id"),
-                        "name": candidate.get("native_name"),
-                        "video": candidate.get("videoname"),
-                        "format": candidate.get("subtype"),
-                        "language": (candidate.get("lang") or {}).get("desc"),
-                        "score": candidate.get("vote_score"),
-                        "uploaded": candidate.get("upload_time"),
-                        "files": [
-                            item.get("f")
-                            for item in (candidate.get("filelist") or [])
-                            if item.get("f")
-                        ][:20],
-                    }
-                )
+            override = overrides.get(imdb_id)
+            if override:
+                candidates = override["candidates"]
+            else:
+                candidates = []
+                for candidate in record.get("candidates") or []:
+                    candidates.append(
+                        {
+                            "id": candidate.get("id"),
+                            "name": candidate.get("native_name"),
+                            "video": candidate.get("videoname"),
+                            "format": candidate.get("subtype"),
+                            "language": (candidate.get("lang") or {}).get("desc"),
+                            "score": candidate.get("vote_score"),
+                            "uploaded": candidate.get("upload_time"),
+                            "files": [
+                                item.get("f")
+                                for item in (candidate.get("filelist") or [])
+                                if item.get("f")
+                            ][:20],
+                        }
+                    )
             if candidates:
                 works.append(
                     {
                         "wikidata_id": record.get("wikidata_id"),
                         "imdb_id": imdb_id,
-                        "name": record.get("work_name"),
+                        "name": override.get("name") if override else record.get("work_name"),
                         "type": record.get("work_type"),
-                        "release_date": record.get("release_date"),
+                        "release_date": (
+                            override.get("release_date")
+                            if override
+                            else record.get("release_date")
+                        ),
                         "candidates": candidates,
                     }
                 )
