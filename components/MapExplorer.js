@@ -104,7 +104,6 @@ export default function MapExplorer() {
   const [subtitleData, setSubtitleData] = useState(null);
   const [subtitleQuery, setSubtitleQuery] = useState("");
   const [subtitleError, setSubtitleError] = useState("");
-  const [subtitleLimit, setSubtitleLimit] = useState(80);
   const deferredQuery = useDeferredValue(query);
   const deferredSubtitleQuery = useDeferredValue(subtitleQuery);
 
@@ -154,6 +153,32 @@ export default function MapExplorer() {
         .some((value) => String(value).toLocaleLowerCase().includes(needle))
     );
   }, [subtitleData, deferredSubtitleQuery]);
+
+  const subtitleTimeline = useMemo(() => {
+    const decades = new Map();
+    subtitleWorks.forEach((work) => {
+      const year = Number(work.release_date?.slice(0, 4));
+      const decade = Number.isFinite(year) && year > 1800
+        ? Math.floor(year / 10) * 10
+        : null;
+      const key = decade ?? "unknown";
+      if (!decades.has(key)) decades.set(key, []);
+      decades.get(key).push(work);
+    });
+    return [...decades.entries()]
+      .sort(([a], [b]) => {
+        if (a === "unknown") return 1;
+        if (b === "unknown") return -1;
+        return a - b;
+      })
+      .map(([decade, works]) => ({
+        decade,
+        works: works.sort((a, b) => {
+          const yearOrder = (a.release_date || "").localeCompare(b.release_date || "");
+          return yearOrder || a.name.localeCompare(b.name, "zh-CN");
+        })
+      }));
+  }, [subtitleWorks]);
 
   const filtered = useMemo(() => {
     const needle = deferredQuery.trim().toLocaleLowerCase();
@@ -336,10 +361,7 @@ export default function MapExplorer() {
               <span>搜索片名、IMDb ID、年份或类型</span>
               <input
                 value={subtitleQuery}
-                onChange={(event) => {
-                  setSubtitleQuery(event.target.value);
-                  setSubtitleLimit(80);
-                }}
+                onChange={(event) => setSubtitleQuery(event.target.value)}
                 placeholder="例如：Sherlock、tt1475582、2010"
               />
             </label>
@@ -351,46 +373,28 @@ export default function MapExplorer() {
             </div>
             {!subtitleData && !subtitleError && <p className="status-text">正在读取字幕索引…</p>}
             {subtitleError && <p className="status-text error">{subtitleError}</p>}
-            <div className="subtitle-grid">
-              {subtitleWorks.slice(0, subtitleLimit).map((work) => (
-                <article className="subtitle-card" key={`${work.imdb_id}-${work.wikidata_id}`}>
-                  <div className="subtitle-card-head">
-                    <div>
-                      <span>{work.release_date?.slice(0, 4) || "年份未知"} · {TYPE_NAMES[work.type] || work.type}</span>
-                      <h3>{work.name}</h3>
-                    </div>
-                    <a href={`https://www.imdb.com/title/${encodeURIComponent(work.imdb_id)}/`} target="_blank" rel="noreferrer">
-                      {work.imdb_id} ↗
-                    </a>
+            <div className="subtitle-timeline">
+              {subtitleTimeline.map(({ decade, works }) => (
+                <section className="timeline-decade" key={decade}>
+                  <div className="timeline-marker">
+                    <span>{decade === "unknown" ? "年份未知" : `${decade}s`}</span>
+                    <small>{works.length} 部</small>
                   </div>
-                  <div className="candidate-list">
-                    {work.candidates.map((candidate) => (
-                      <details key={candidate.id}>
-                        <summary>
-                          <span>{candidate.name || candidate.video || `字幕 ${candidate.id}`}</span>
-                          <b>{candidate.language || "含英文"} · {candidate.format || "格式未知"}</b>
-                        </summary>
-                        <div className="candidate-detail">
-                          {candidate.video && <p>适配版本：{candidate.video}</p>}
-                          <p>评分：{candidate.score ?? "—"} · 上传：{candidate.uploaded || "—"} · ASSRT ID：{candidate.id}</p>
-                          {candidate.files?.length > 0 && (
-                            <ul>{candidate.files.map((file) => <li key={file}>{file}</li>)}</ul>
-                          )}
-                        </div>
-                      </details>
+                  <div className="timeline-works">
+                    {works.map((work) => (
+                      <a
+                        key={`${work.imdb_id}-${work.wikidata_id}`}
+                        href={`https://www.imdb.com/title/${encodeURIComponent(work.imdb_id)}/`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {work.name}（{work.candidates.length}）
+                      </a>
                     ))}
                   </div>
-                </article>
+                </section>
               ))}
             </div>
-            {subtitleWorks.length > subtitleLimit && (
-              <button
-                className="subtitle-more"
-                onClick={() => setSubtitleLimit((current) => current + 80)}
-              >
-                再显示 {Math.min(80, subtitleWorks.length - subtitleLimit)} 部
-              </button>
-            )}
           </div>
         </section>
       ) : null}
